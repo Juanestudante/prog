@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define NUM_SENHAS 10
+
+
+int gerarnumero(int min, int max) {
+    return min + rand() % (max - min + 1);
+}
+
+
+char* rotularSenha() {
+    int random = gerarnumero(1, 100);
+    if (random <= 67) {
+        return "Normal";
+    } else {
+        return "Prioridade";
+    }
+}
+
+int main() {
+    
+    srand(time(NULL));
+
+    printf("Senhas do Guichet:\n");
+    for (int i = 1; i <= NUM_SENHAS; ++i) {
+        printf("Senha %d: %s\n", i, rotularSenha());
+    }
+
+    return 0;
+}
